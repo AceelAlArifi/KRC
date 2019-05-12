@@ -9,8 +9,6 @@ const bookSchema = new mongoose.Schema({
     image: String,
     ageRange: String,
     publishedBy:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }
-
-
 },{timestamps: true})
 
 
