@@ -13,7 +13,6 @@ const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 // get routs 
 const bookRouts = require('./routes/books');
-// const authRouts = require('./routes/auth.routes');
 
 mongoose.connect('mongodb://localhost/books', {useNewUrlParser : false})
 .then(()=> console.log('Mongodb is running'),(err)=> console.log(err) )

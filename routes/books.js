@@ -16,7 +16,16 @@ router.get('/', (request, response)=>{
   })
   
 })
-
+// get one book 
+router.get('/:indexOfBooksArray', (request, response) => {
+   Book.findById(request.params.indexOfBooksArray)//findOneAndUpdate,
+   .then((book) => {
+    response.status(200).json({ book : book})
+   })
+   .catch(err => {
+    response.send({ message : err})
+   })
+})
 //add new book 
 router.post('/', (request, response)=>{
 //fet all data 
