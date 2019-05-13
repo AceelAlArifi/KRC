@@ -8,7 +8,8 @@ const bookSchema = new mongoose.Schema({
     year: {type: Number , maxlength: 4},
     image: String,
     ageRange: String,
-    publishedBy:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    publishedBy:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    rate: [{userID: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}, Rate:{type: Number, required : true}}],
 },{timestamps: true})
 
 
