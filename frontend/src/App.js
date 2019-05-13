@@ -15,9 +15,11 @@ import Events from "./components/Events";
 import Posts from "./components/Posts";
 
 
+
 class App extends Component {
   render() {
     return (
+    
       <Router>
         <nav>
           <Link to="/Home">Home</Link>
@@ -28,8 +30,6 @@ class App extends Component {
           <Link to="/Book">Book</Link>
           <Link to="/Events">Events</Link>
           <Link to="/Posts">Posts</Link>
-
-
         </nav>
         <div className="App">
           <Route exact path='/Home' component={Home} />
@@ -40,10 +40,8 @@ class App extends Component {
           <Route path='/Book' component={Book} />
           <Route path='/Events' component={Events} />
           <Route path='/Posts' component={Posts} />
-
-
-
         </div>
+   
       </Router>
     )
   }

@@ -5,7 +5,6 @@ class AllBooks extends Component {
         return (
             <div>
                 <h1>Discover All Books</h1>
-           
             </div>
         )
     }

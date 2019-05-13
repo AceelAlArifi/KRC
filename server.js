@@ -9,9 +9,10 @@ const mongoose = require('mongoose')
 // get routs 
 const bookRouts = require('./routes/books');
 
-mongoose.connect('mongodb://localhost/', {useNewUrlParser : false})
+mongoose.connect('mongodb://localhost/books', {useNewUrlParser : false})
 .then(()=> console.log('Mongodb is running'),(err)=> console.log(err) )
 
+app.use(require('cors')())
 //
 app.set('view engine', 'ejs');
 mongoose.set('useCreateIndex', true);
@@ -29,11 +30,16 @@ app.use('/books', bookRouts);
 
 
 app.get('/', (req, res)=>{
-    res.send('Hello world');
+  //res.status(200).json({ books: "books" })
+  res.json({ todos: "tods" })
+
+    //res.send('Hello world');
   });
   
   app.get('/somedata', (req, res) => {
-    res.send('here is your information');
+    res.json({ todos: "here is your information" })
+
+    //res.send('here is your information');
 });
   // listener 
 
