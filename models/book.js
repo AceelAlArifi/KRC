@@ -1,8 +1,13 @@
 const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const userSchema = require('./user').userSchema 
 
-const bookSchema = new mongoose.Schema({
+const genreSchema = new Schema({
+    name : String
+   })
+   
+const bookSchema = new Schema({
     title : {type: String, required : true, unique: true},
     auther:String,
     year: {type: Number , maxlength: 4},
