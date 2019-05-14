@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios'
+// import jwt_decode from 'jwt-decode'
+import * as JWT from 'jwt-decode';
+
 import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -15,6 +18,7 @@ import {
   Route,
   // Link
 } from 'react-router-dom';
+
 //pages pathes 
 import Home from "./components/Home";
 import SignUp from "./components/SignUp";
@@ -39,15 +43,12 @@ class App extends Component {
     errorMsg: '',
     isAuthenticated: false,
     hasError: false,
+    userData: {}
   }
   changeHandler = (e) => {
-    console.log("changing")
     let data = { ...this.state }
     data[e.target.name] = e.target.value
-
     this.setState(data)
-    console.log(this.state)
-
   }
   //get the books (recent, rates or whatever)
   getAllBooks = () => {
@@ -89,8 +90,25 @@ class App extends Component {
     axios.post('http://localhost:3003/auth/login', { email: this.state.email, password: this.state.password })
       .then(response => {
         console.log(response.data)
+        if (response.data.token) {
+          setToken(response.data.token)
+          let data = { ...this.state }
+          data.user = response.data.user
+          data.isAuthenticated = true
+          data.hasError = false
+          data.userData = response.data.user
+          this.setState(data)
+          //redirect to home page
+          window.location = '/Home';
+        }
+
         //redirect to hoome page 
-      }).catch(err => console.log(err))
+      }).catch(err => {
+        console.log(err)
+        let data = { ...this.state }
+        data.hasError = true
+        this.setState(data)
+      })
   }
   //log out handler
   //kill the session and delete token 
@@ -101,18 +119,61 @@ class App extends Component {
     data.user = ""
     data.email = ""
     data.password = ""
-    data.games = []
-
+    data.books = []
+    data.userData = {}
     this.setState(data)
   }
 
+  userType = () => {
+    if (this.state.isAuthenticated) {
+      // if(){ //get user type
+      return <Dropdown id="profile-menu">
+        <Dropdown.Toggle id="dropdown01" data-toggle="dropdown" className="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Hello {this.state.userData.name}
+        </Dropdown.Toggle>
+        <Dropdown.Menu className="dropdown-menu">
+          <Dropdown.Item href="/Profile" className="dropdown-item">My Profile</Dropdown.Item>
+          <Dropdown.Item href="/Lists">My Lists</Dropdown.Item>
+          <Dropdown.Item href="/Kids">My Kids</Dropdown.Item>
+          <Nav.Link href="/Home" onClick={this.logout} className="dropdown-item">Sing out</Nav.Link>
+        </Dropdown.Menu>
+      </Dropdown>
+      // }
+    } else {
+      return <><Nav.Link href="/SignUp">Sign Up</Nav.Link>
+        <Nav.Link href="/SignIn">Sign In</Nav.Link>
+      </>
+    }
+
+
+
+  }
+  componentDidMount() {
+    /*
+      To stay logged in every time the App.js is rendered
+      Check if there is a token and if there is decode it and
+      set the data to state.
+      */
+    if (getToken()) {
+      //remember the token consists of 3 parts
+      //1. HEADER:ALGORITHM & TOKEN TYPE
+      //2. PAYLOAD:DATA
+      //3. SIGNATURE
+      let decoded = JWT(getToken()) //decode token
+      console.log(this.state)
+      let data = { ...this.state }
+      data.user = decoded
+      data.isAuthenticated = true
+      this.setState(data)
+      console.log(this.state)
+
+    }
+  }
+
   render() {
-    const showLogin = (!this.state.isAuthenticated) ? SignIn : null //tag! <login or what ever/>
+    const showLogin = this.userType()
     return (
       <Router>
-        {/* {Logout} */}
-
-        {/* {showLogin} */}
         <Navbar bg="light" expand="lg" >
           {/* className="navbar navbar-expand navbar-dark" */}
           <Navbar.Brand href="/Home" >Book Explorers</Navbar.Brand>
@@ -123,21 +184,7 @@ class App extends Component {
               <Nav.Link href="/AllBooks">All Books</Nav.Link>
               <Nav.Link href="/Events">Events</Nav.Link>
               <Nav.Link href="/Posts">Posts</Nav.Link>
-              <Nav.Link href="/SignUp">Sign Up</Nav.Link>
-              <Nav.Link href="/SignIn">Sign In</Nav.Link>
-
-              <Dropdown id="profile-menu">
-                <Dropdown.Toggle id="dropdown01" data-toggle="dropdown" className="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-                  Hello {this.state.user.username}
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu className="dropdown-menu">
-                  <Dropdown.Item href="/Profile" className="dropdown-item">My Profile</Dropdown.Item>
-                  <Dropdown.Item href="/Lists">My Lists</Dropdown.Item>
-                  <Dropdown.Item href="/Kids">My Kids</Dropdown.Item>
-                  <Nav.Link href="/Singout" className="dropdown-item">Sing out</Nav.Link>{/*destroy_user_session_path, method: :delete,  */}
-                </Dropdown.Menu>
-              </Dropdown>
+              {showLogin}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -146,11 +193,11 @@ class App extends Component {
           {/* <Alert color="danger" isopen={this.state.hasError} toggle={this.onDismiss} fade={false}>{this.state.errorMsg}</Alert> */}
 
           <Route path='/Home' component={Home} />
-          <Route path='/SignUp' render={(routeProps) => (
-            <SignUp {...routeProps} change={this.changeHandler} register={this.registerHandler} />
+          <Route path='/SignUp' render={() => (
+            <SignUp change={this.changeHandler} register={this.registerHandler} />
           )} />
-          <Route path='/SignIn' render={(routeProps) => (
-            <SignIn {...routeProps} change={this.changeHandler} login={this.loginHandler} />
+          <Route path='/SignIn' render={() => (
+            <SignIn change={this.changeHandler} login={this.loginHandler} />
           )} />
           <Route path='/AllBooks' component={AllBooks} />
           <Route path='/Events' component={Events} />
