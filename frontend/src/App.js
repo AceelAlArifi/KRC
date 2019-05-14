@@ -59,8 +59,11 @@ class App extends Component {
         .catch(err => console.log(err))
 }
   //register post request 
-  registerHandler = (e) => {
-    e.preventDefault()
+  registerHandler = (user_data) => {
+    user_data.preventDefault()
+    console.log(user_data);
+    this.registerHandler = this.registerHandler.bind(this)
+
     //all register data how can we get it by sending it 
     axios.post('http://localhost:3003/auth/register', { email: this.state.email, password: this.state.password })
       .then(response => {
@@ -131,7 +134,9 @@ class App extends Component {
           {/* <Alert color="danger" isopen={this.state.hasError} toggle={this.onDismiss} fade={false}>{this.state.errorMsg}</Alert> */}
 
           <Route path='/Home' component={Home} />
-          <Route path='/SignUp' component={SignUp} />
+          <Route path='/SignUp'render={(routeProps) => (
+            <SignUp {...routeProps} register={this.registerHandler} />
+          )} />
           <Route path='/SignIn' render={(routeProps) => (
             <SignIn {...routeProps} change={this.changeHandler} login={this.loginHandler} />
           )} />
