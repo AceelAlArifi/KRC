@@ -101,7 +101,8 @@ class AllBooks extends Component {
                         <TextField
                             autoFocus
                             margin="dense"
-                            id="name"
+                            id="title"
+                            name="title"
                             label="Book Title"
                             type="text"
                             fullWidth
@@ -111,7 +112,8 @@ class AllBooks extends Component {
                         <TextField
                             autoFocus
                             margin="dense"
-                            id="name"
+                            id="author"
+                            name="author"
                             label="Author"
                             type="text"
                             fullWidth
@@ -121,7 +123,8 @@ class AllBooks extends Component {
                         <TextField
                             autoFocus
                             margin="dense"
-                            id="name"
+                            id="year"
+                            name="year"
                             label="Year of publish"
                             type="text"
                             fullWidth
@@ -131,7 +134,8 @@ class AllBooks extends Component {
                         <TextField
                             autoFocus
                             margin="dense"
-                            id="name"
+                            id="image"
+                            name="image"
                             label="Book Cover"
                             type="img"
                             fullWidth
@@ -141,7 +145,8 @@ class AllBooks extends Component {
                         <TextField
                             autoFocus
                             margin="dense"
-                            id="name"
+                            id="ageRange"
+                            name="ageRange"
                             label="Suitable for explorers from:"
                             type="text"
                             fullWidth
