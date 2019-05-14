@@ -14,7 +14,7 @@ const mongoose = require('mongoose')
 // get routs 
 const bookRouts = require('./routes/books');
 
-mongoose.connect('mongodb://localhost/books', {useNewUrlParser : false})
+mongoose.connect('mongodb://localhost/books', {useNewUrlParser : true})
 .then(()=> console.log('Mongodb is running'),(err)=> console.log(err) )
 
 app.use(require('cors')())
