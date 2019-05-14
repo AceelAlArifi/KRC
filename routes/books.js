@@ -31,7 +31,7 @@ router.post('/', (request, response)=>{
 //fet all data 
   let data = {
     title : request.body.title,
-    auther:request.body.auther,
+    author:request.body.author,
     year: request.body.year,
     image: request.body.image,
     ageRange: request.body.ageRange,

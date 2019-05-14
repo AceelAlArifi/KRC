@@ -38,11 +38,10 @@ class AllBooks extends Component {
         axios.get("http://localhost:3003/books")
             .then(data => {
                 console.log("from my api", data)
-                // let temp = { ...this.state } // copy
-                // temp.todos = data.data.todos // set to api response
-                if (data.books) {
+                if (data.data.books.length > 0) {
+                     console.log(data.books)
                     this.setState({
-                        books: data.books
+                        books: data.data.books
                     }) //set the state
                 }
             })
@@ -51,15 +50,15 @@ class AllBooks extends Component {
 
     AddNewBook = () => {
         axios.post("http://localhost:3003/books", {
-            title: this.state.title,
-            auther: this.state.auther,
-            year: this.state.year,
-            image: this.state.image,
-            ageRange: this.state.ageRange,
+            //publishedBy:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' },        
+            "title": this.state.title,
+            "author": this.state.author,
+            "year": this.state.year,
+            "image": this.state.image,
+            "ageRange": this.state.ageRange,
         })
             .then(data => {
                 console.log("New Book Added", data)
-
                 //     if (data.books){
                 //     this.setState({
                 //         books: data.books
