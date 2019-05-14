@@ -2,19 +2,37 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Nav from 'react-bootstrap/Nav';
 import CardGroup from 'react-bootstrap/CardGroup'
-import Card from 'react-bootstrap/Card'
-
+// import Card from 'react-bootstrap/Card'
+import BookCard from './BookCard'
 // import Book from "./components/Book";
-// import {
-//     BrowserRouter as Router,
-//     Route,
-//     // Link
-// } from 'react-router-dom';
+// import Button from 'react-bootstrap/Button'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 
 class AllBooks extends Component {
     state = {
-    books: []
-}
+        books: [],
+        open: false,
+
+    }
+    handleClickOpen = () => {
+        this.setState({ open: true });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+    changeHandler = (e) => {
+        let data = { ...this.state }
+        data[e.target.name] = e.target.value
+        this.setState(data)
+    }
     getAllBooks = () => {
 
         axios.get("http://localhost:3003/books")
@@ -22,73 +40,127 @@ class AllBooks extends Component {
                 console.log("from my api", data)
                 // let temp = { ...this.state } // copy
                 // temp.todos = data.data.todos // set to api response
-                this.setState({
-                    books: data.books}) //set the state
+                if (data.books) {
+                    this.setState({
+                        books: data.books
+                    }) //set the state
+                }
             })
             .catch(err => console.log(err))
     }
-    
+
+    AddNewBook = () => {
+        axios.post("http://localhost:3003/books", {
+            title: this.state.title,
+            auther: this.state.auther,
+            year: this.state.year,
+            image: this.state.image,
+            ageRange: this.state.ageRange,
+        })
+            .then(data => {
+                console.log("New Book Added", data)
+
+                //     if (data.books){
+                //     this.setState({
+                //         books: data.books
+                //     }) //set the state
+                // }
+                this.handleClose()
+            })
+            .catch(err => console.log(err))
+    }
+
     componentDidMount() {
         this.getAllBooks() // load axios data on component mount
     }
 
-    displayBooks = () => {
-
-        return this.state.books.map(book =>{
-           return <li key={book._id} id={book._id}>{book.name}</li>
-        }
-        )
-    }
-
     render() {
+        var allbooks = this.state.books.map(book => {
+            return <BookCard key={book._id} book={book} />
+        })
         return (
-<div>
+            <div>
                 <div>
                     <Nav className="mr-auto">
                         <h1>Discover All Books</h1>
                     </Nav>
                 </div>
                 <CardGroup>
-                    <Card>
-                        <Card.Img variant="top" src="holder.js/100px160" />
-                        <Card.Body>
-                            <Card.Title>Book title</Card.Title>
-                            <Card.Text>
-                              Book description!
-      </Card.Text>
-                        </Card.Body>
-                        <Card.Footer>
-                            <small className="text-muted">Published year</small>
-                        </Card.Footer>
-                    </Card>
-                    <Card>
-                        <Card.Img variant="top" src="holder.js/100px160" />
-                        <Card.Body>
-                            <Card.Title>Book title</Card.Title>
-                            <Card.Text>
-                                Book description!
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Footer>
-                            <small className="text-muted">Published year</small>
-                        </Card.Footer>
-                    </Card>
-                    <Card>
-                        <Card.Img variant="top" src="holder.js/100px160" />
-                        <Card.Body>
-                            <Card.Title>Book title</Card.Title>
-                            <Card.Text>
-                            Book description!
-      </Card.Text>
-                        </Card.Body>
-                        <Card.Footer>
-                            <small className="text-muted">Published year</small>
-                        </Card.Footer>
-                    </Card>
+                    {allbooks}
                 </CardGroup>
+                <Button onClick={this.handleClickOpen}> Add New Book </Button>
+                <Dialog
+                    open={this.state.open}
+                    aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">Adding new discovery: </DialogTitle>
+                    <DialogContent>
 
+                        <DialogContentText>
+                            Dear Explorer, Kindly fill up the book information below:
+            </DialogContentText>
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="name"
+                            label="Book Title"
+                            type="text"
+                            fullWidth
+                            onChange={this.changeHandler} />
+                    </DialogContent>
+                    <DialogContent>
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="name"
+                            label="Author"
+                            type="text"
+                            fullWidth
+                            onChange={this.changeHandler} />
+                    </DialogContent>
+                    <DialogContent>
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="name"
+                            label="Year of publish"
+                            type="text"
+                            fullWidth
+                            onChange={this.changeHandler} />
+                    </DialogContent>
+                    <DialogContent>
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="name"
+                            label="Book Cover"
+                            type="img"
+                            fullWidth
+                            onChange={this.changeHandler} />
+                    </DialogContent>
+                    <DialogContent>
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            id="name"
+                            label="Suitable for explorers from:"
+                            type="text"
+                            fullWidth
+                            onChange={this.changeHandler} />
+                    </DialogContent>
+                    <DialogContentText>
+                                           Thank you for sharing your discoveries with us!
+                    </DialogContentText>
 
-</div>
+                    <DialogActions>
+                        <Button onClick={this.handleClose} color="primary">
+                            Cancel
+            </Button>
+                        <Button onClick={this.AddNewBook} color="primary">
+                            Add
+            </Button>
+                    </DialogActions>
+                </Dialog>
+            </div>
 
         )
     }
