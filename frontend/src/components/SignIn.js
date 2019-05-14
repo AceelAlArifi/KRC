@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 // import Profile from "./components/Profile";
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar'
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import FormGroup from 'react-bootstrap/FormGroup'
+// import FormGroup from 'react-bootstrap/FormGroup'
 import Col from 'react-bootstrap/Col'
-import FormControl from 'react-bootstrap/FormControl'
-import {
-    BrowserRouter as Router,
-    Route,
-    // Link
-} from 'react-router-dom';
+// import FormControl from 'react-bootstrap/FormControl'
+// import {
+//     BrowserRouter as Router,
+//     Route,
+//     // Link
+// } from 'react-router-dom';
 
 class SignIn extends Component {
     render() {

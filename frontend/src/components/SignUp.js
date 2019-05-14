@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar'
+// import Nav from 'react-bootstrap/Nav';
+// import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import FormGroup from 'react-bootstrap/FormGroup'
+// import FormGroup from 'react-bootstrap/FormGroup'
 import Col from 'react-bootstrap/Col'
-import FormControl from 'react-bootstrap/FormControl'
+// import FormControl from 'react-bootstrap/FormControl'
 
 class SignUp extends Component {
     state = {

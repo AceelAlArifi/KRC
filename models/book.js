@@ -9,7 +9,7 @@ const genreSchema = new Schema({
    
 const bookSchema = new Schema({
     title : {type: String, required : true, unique: true},
-    auther:String,
+    author:String,
     year: {type: Number , maxlength: 4},
     image: String,
     ageRange: String,

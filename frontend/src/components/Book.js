@@ -4,7 +4,8 @@ class Book extends Component {
     render() {
         return (
             <div>
-                <h1>Book Description</h1>
+                
+                <h1>single Book Description</h1>
                 <div>
                     <h1>Book: {this.props.image}</h1>
                     <p>
