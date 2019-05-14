@@ -13,7 +13,7 @@ const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 // get routs 
 const bookRouts = require('./routes/books');
-
+///database name and cooniction
 mongoose.connect('mongodb://localhost/books', {useNewUrlParser : true})
 .then(()=> console.log('Mongodb is running'),(err)=> console.log(err) )
 
@@ -45,6 +45,11 @@ app.use(session({
 app.use('/books', bookRouts);
 app.use('/auth', require('./routes/auth.routes'))
 
+
+
+
+
+
 //cannot find route
 app.use('*', (request, response) => {
   response.status(404).json({message : "Data not found!"})
@@ -53,18 +58,10 @@ app.use('*', (request, response) => {
 app.get('/', (req, res)=>{
   //res.status(200).json({ books: "books" })
   res.json({ todos: "tods" })
-
     //res.send('Hello world');
   });
-  
-  app.get('/somedata', (req, res) => {
-    res.json({ todos: "here is your information" })
 
-    //res.send('here is your information');
-});
-
-  // listener 
-
+// listener 
 app.listen(port, ()=> {
     console.log("I am listening for requests!!!"+ port);
   });
