@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Nav from 'react-bootstrap/Nav';
+// import Book from "./components/Book";
+// import {
+//     BrowserRouter as Router,
+//     Route,
+//     // Link
+// } from 'react-router-dom';
 
 class AllBooks extends Component {
     getAllBooks = () => {
@@ -20,9 +27,19 @@ class AllBooks extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Discover All Books</h1>
-            </div>
+<div>
+                <div>
+                    <h1>Discover All Books</h1>
+                    <Nav className="mr-auto">
+                        {/* <Nav.Link href="/Book">Book</Nav.Link> */}
+                    </Nav>
+                </div>
+{/* 
+                <div className="App">
+                    <Route path='/Book' component={Book} />
+                </div> */}
+</div>
+
         )
     }
 }
