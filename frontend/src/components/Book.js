@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
+import Image from 'react-bootstrap/Image'
 
 class Book extends Component {
     render() {
         return (
             <div>
-                <h1>Book Description</h1>
-                <div>
-                    <h1>Book: {this.props.image}</h1>
-                    <p>
-                        Suitable For:{this.props.ageRange}
-                        Written By: {this.props.auther}
-                        Posted By: {this.props.publishedBy}
-                    </p>
+                <Image src="holder.js/100px250" fluid />
+                <h1>Book title</h1>
+                <h3>By auther</h3>
+                <h3>Published on year</h3>
+                <h3>Rate</h3>
+                <h3>Age range</h3>
+
+                <div className="Reviews">
+
                 </div>
             </div>
         )
