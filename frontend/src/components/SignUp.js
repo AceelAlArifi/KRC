@@ -86,7 +86,7 @@ class SignUp extends Component {
                             <Form.Label sm={2}>Your Parent Email</Form.Label>
                             <Form.Control type="email" name="parentemail" placeholder="Enter Your Parent Email" onChange={this.change} />
                         </Form.Group>
-                        <Button variant="primary" type="submit" color="primary" size="lg" block onClick={() => this.props.register(this.state)}>Sign Up</Button>
+                        <Button variant="primary"  color="primary" size="lg" block onClick={() => {this.props.register(this.state)}}>Sign Up</Button>
                     </Form>
                 </Col>
             </div>

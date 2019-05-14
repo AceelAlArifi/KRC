@@ -38,7 +38,7 @@ class App extends Component {
     user: "",
     errorMsg: '',
     isAuthenticated: false,
-    hasError: false
+    hasError: false,
   }
   changeHandler = (e) => {
     console.log("changing")
@@ -46,26 +46,38 @@ class App extends Component {
     data[e.target.name] = e.target.value
 
     this.setState(data)
+    console.log(this.state)
+
   }
   //get the books (recent, rates or whatever)
   getAllBooks = () => {
     axios.get("http://localhost:3003/books")
-        .then(data => {
-            console.log("from my api", data)
-            // let temp = { ...this.state } // copy
-            // temp.todos = data.data.todos // set to api response
-            // this.setState(temp) //set the state
-        })
-        .catch(err => console.log(err))
-}
+      .then(data => {
+        console.log("from my api", data)
+        // let temp = { ...this.state } // copy
+        // temp.todos = data.data.todos // set to api response
+        // this.setState(temp) //set the state
+      })
+      .catch(err => console.log(err))
+  }
   //register post request 
   registerHandler = (user_data) => {
-    user_data.preventDefault()
+    //  e.preventDefault()
+    // console.log(e);
     console.log(user_data);
-    this.registerHandler = this.registerHandler.bind(this)
-
+    // this.registerHandler = this.registerHandler.bind(this)
     //all register data how can we get it by sending it 
-    axios.post('http://localhost:3003/auth/register', { email: this.state.email, password: this.state.password })
+    //parentUser:{ type: Schema.Types.ObjectId, ref : 'User'},
+    //kids:[{ type: Schema.Types.ObjectId, ref : 'User'}]
+
+    axios.post('http://localhost:3003/auth/register',
+      {
+        email: user_data.email,
+        password: user_data.password,
+        parent: user_data.parent,
+        name: user_data.name,
+        userName: user_data.username
+      })
       .then(response => {
         console.log(response.data)
         //redirect to hoome page 
@@ -134,8 +146,8 @@ class App extends Component {
           {/* <Alert color="danger" isopen={this.state.hasError} toggle={this.onDismiss} fade={false}>{this.state.errorMsg}</Alert> */}
 
           <Route path='/Home' component={Home} />
-          <Route path='/SignUp'render={(routeProps) => (
-            <SignUp {...routeProps} register={this.registerHandler} />
+          <Route path='/SignUp' render={(routeProps) => (
+            <SignUp {...routeProps} change={this.changeHandler} register={this.registerHandler} />
           )} />
           <Route path='/SignIn' render={(routeProps) => (
             <SignIn {...routeProps} change={this.changeHandler} login={this.loginHandler} />
