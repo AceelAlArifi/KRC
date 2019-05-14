@@ -33,17 +33,17 @@ app.use(methodOverride('_method'));
 
 //create session for passport
 app.use(session({
-  secret : "test",
-  resave : false,
-  saveUninitialized : true
- }))
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
 
  app.use(passport.initialize())
  app.use(passport.session())
  
 //use routs 
 app.use('/books', bookRouts);
-app.use('/api/auth', require('./routes/auth.routes'))
+app.use('/auth', require('./routes/auth.routes'))
 
 //cannot find route
 app.use('*', (request, response) => {

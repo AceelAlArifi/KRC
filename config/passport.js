@@ -5,7 +5,7 @@ const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
 
 
-const User = require('../models/user')
+const User = require('../models/user').User
 
 passport.use(new LocalStrategy({
     usernameField: 'email',

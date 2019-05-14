@@ -10,9 +10,8 @@ const passportHelper = require('../config/passport')
 
 router.get('/', (request, response, next) => {
   //custom jwt authenticate
-
-    parent.findby()
-    .then( )
+    //parent.findby()
+    //.then( )
   passport.authenticate('jwt', {session: false}, (err, user, info)=>{
       console.log("got here")
       if(err){ return response.status(400).json({ message: err }) }
@@ -35,9 +34,11 @@ router.get('/', (request, response, next) => {
 
 router.post('/register',(request,response)=>{
   let data ={
-    username: request.body.username,
+    userName: request.body.userName,
     email: request.body.email,
-    password: request.body.password
+    password: request.body.password,
+    name: request.body.name,
+    parent: request.body.parent,
   }
   let user = new User(data)
   user.save().then(()=>{
@@ -55,7 +56,7 @@ router.post('/login', (request, response) => {
 
     if (err || !user) {
         return response.status(401).json({
-            message: info ? info.message : 'Login failed',
+            message: info ? info.message : 'Login failed'+err,
             user   : user
         });
     }
