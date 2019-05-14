@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios'
 import Navbar from 'react-bootstrap/Navbar'
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
-import FormControl from 'react-bootstrap/FormControl'
+// import Button from 'react-bootstrap/Button'
+// import Form from 'react-bootstrap/Form'
+// import FormControl from 'react-bootstrap/FormControl'
 import Nav from 'react-bootstrap/Nav'
-import Alert from 'react-bootstrap/Alert'
+// import Alert from 'react-bootstrap/Alert'
 import Dropdown from 'react-bootstrap/Dropdown'
 
 import { getToken, setToken, logout } from './services/auth'
