@@ -6,9 +6,14 @@ import Col from 'react-bootstrap/Col'
 class SignIn extends Component {
     render() {
         return (
-
+           
             <div>
-                <h1>Sign in</h1>
+                 <div>
+                    <img src="https://i.ibb.co/kKnZLJ2/bookexploreres.png" alt="Logo" />
+                </div>
+                <div>
+                <h1>Sign In</h1>
+                </div>
                 <Col sm={3} md={4} className="mx-auto">
                     <Form>
                         <Form.Group controlId="formBasicEmail">
