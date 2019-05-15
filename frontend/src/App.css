@@ -13,7 +13,7 @@
 
 
 .App-link {
-background-color: rgb(  234,109	,110);
+background-color: rgb(234,109	,110);
 }
 
 @keyframes App-logo-spin {
@@ -23,54 +23,6 @@ background-color: rgb(  234,109	,110);
   to {
     transform: rotate(360deg);
   }
-}
-
-/* //Home page */
-
-.header{
-    background-color: #ffff;
-    color: #3A5D61;
-  }
-.roll-button{
-background-color: rgb(  234,109	,110);
-    border: 1px solid rgb(106,153,156);
-    position: relative;
-    display: inline-block;
-    font-family: "Raleway", sans-serif;
-    font-size: 13px;
-    line-height: 24px;
-    font-weight: 700;
-    padding: 12px 35px;
-    color: #3A5D61;
-    text-transform: uppercase;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -o-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-    /* font-family: 'Unkempt',display; */
-    font: 400 15px/1.8 "Lato", sans-serif;
-
-
-}
-.roll-button:hover{
-  background-color: transparent;
-  color: #3A5D61;
-}
-
-a:hover, a:focus{
-    color: #A16258;
-    text-decoration: none;
-    outline: 0;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
 }
 
 
@@ -84,7 +36,7 @@ background-color: rgb(106,153,156);
 height: 100%; 
   /* Center and scale the image nicely */
 position: relative;
-opacity: 0.65;
+/* opacity: 0.65; */
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
