@@ -80,14 +80,17 @@ class AllBooks extends Component {
         return (
             <div>
                 <div>
-                    <Nav className="mr-auto">
+                    <Nav className="allbooks">
                         <h1>Discover All Books</h1>
                     </Nav>
                 </div>
                 <CardGroup>
                     {allbooks}
                 </CardGroup>
+                <div className="add-button">
                 <Button onClick={this.handleClickOpen}> Add New Book </Button>
+                </div>
+
                 <Dialog
                     open={this.state.open}
                     aria-labelledby="form-dialog-title">

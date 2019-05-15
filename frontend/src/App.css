@@ -94,18 +94,68 @@ color: #777;
 }
 
 .welcome {
-color: #fff;
+color: rgb(  234,109	,110);;
 padding: 18px;
-font-size: 25px;
+font-size: 50px;
 letter-spacing: 10px;
-font: 400 15px/1.8 "Lato", sans-serif;
+font: 400 40px/1.8 "Lato", sans-serif;
+margin-top: 35%;
 }
 
 
 .mr-auto{
 color: #fff;
-padding: 18px;
-font-size: 25px;
-letter-spacing: 10px;
+padding: 5px;
+letter-spacing: 2px;
 font: 400 15px/1.8 "Lato", sans-serif;
+}
+
+.allbooks{
+color: rgb(  234,109	,110);;
+padding: 18px;
+font-size: 50px;
+letter-spacing: 10px;
+font: 400 40px/1.8 "Lato", sans-serif;
+margin-top: 35%;
+}
+
+.add-button{
+  background-color: rgb(  234,109	,110);
+    border: 1px solid rgb(106,153,156);
+    position: relative;
+    display: inline-block;
+    font-family: "Raleway", sans-serif;
+    font-size: 13px;
+    line-height: 24px;
+    font-weight: 700;
+    padding: 12px 35px;
+    color: #3A5D61;
+    text-transform: uppercase;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    /* font-family: 'Unkempt',display; */
+    font: 400 15px/1.8 "Lato", sans-serif;
+}
+
+.add-button:hover{
+  background-color: transparent;
+  color: #3A5D61;
+}
+
+a:hover, a:focus{
+    color: #A16258;
+    text-decoration: none;
+    outline: 0;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
