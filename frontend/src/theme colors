@@ -14,3 +14,24 @@ background-color: #2B232A;
 background-color: #283C61;
 background-color: #f0ab9f;
 background-color:#FF6D70;
+
+
+
+
+header .logo {
+	
+	z-index: auto;
+    display: inline;
+	font-size: calc(2.8em + 2.6vw);
+	font-weight: 700;
+	letter-spacing: .01em;
+	padding: 2rem 0 0 4.5rem;
+	text-shadow: .022em .022em .022em #111;
+	color: #fff;
+}
+
+
+
+.Logo {
+  background-image: url(./logo.png);
+}

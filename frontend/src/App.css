@@ -29,18 +29,6 @@ letter-spacing: 2px;
 font: 400 15px/1.8 "Lato", sans-serif;
 }
 
-header .logo {
-	
-	z-index: auto;
-    display: inline;
-	font-size: calc(2.8em + 2.6vw);
-	font-weight: 700;
-	letter-spacing: .01em;
-	padding: 2rem 0 0 4.5rem;
-	text-shadow: .022em .022em .022em #111;
-	color: #fff;
-}
-
 .allbooks{
 color: rgb(  234,109	,110);;
 padding: 18px;
