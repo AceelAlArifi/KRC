@@ -1,11 +1,39 @@
 import React, { Component } from 'react';
-// import Nav from 'react-bootstrap/Nav';
-// import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-// import FormGroup from 'react-bootstrap/FormGroup'
 import Col from 'react-bootstrap/Col'
-// import FormControl from 'react-bootstrap/FormControl'
+import Alert from 'react-bootstrap/Alert'
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import SweetAlert from 'sweetalert-react';
+
+function validateLength(element) {
+    // true means invalid, so our conditions got reversed
+    return element.length > 3;
+}
+function CheckPassword(password) {
+    var passw = /^[A-Za-z]\w{7,15}$/;
+    if (password.match(passw)) {
+        return true;
+    }
+    else {
+        document.getElementById("error").innerHTML= '<p>PassWord have to be 7 charecters with capital and small case</p>';
+        return false;
+    }
+}
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(String(email).toLowerCase())){
+        return true;
+    }
+    else{
+        document.getElementById("error").innerHTML= '<p>Email format not correct</p>';
+        return false;
+    }
+}
 
 class SignUp extends Component {
     state = {
@@ -14,37 +42,76 @@ class SignUp extends Component {
         password: "",
         name: "",
         parent: false,
+        open:false
     }
-    change = (e) => {
-        let data = {...this.state}
-        if (e.target.id == 'parent-radio'){
-        this.setState({
-            parent: true,
-        })}
-        else if(e.target.id == 'child-radio'){
-        this.setState({
-            parent: false,
-        })
+    submit = () => {        
+
+        if (validateEmail(this.state.email)&& CheckPassword(this.state.password) && validateLength(this.state.username)&& validateLength(this.state.name) ){
+        if(!this.state.parent){
+            if (validateEmail(this.state.parentemail)){
+                this.props.register(this.state)
+                this.setState({
+                    open:true
+                })
+            }else{
+                document.getElementById("error").innerHTML= '<p>Enter Your Parent Email</p>';
+            }
+        }else{
+            this.props.register(this.state)
+            this.setState({
+                open:true
+            })
+        }
     }
     else{
-        data[e.target.name] = e.target.value
-        this.setState(data)
+        document.getElementById("error").innerHTML=  document.getElementById("error").innerHTML+ '<p>Fill the form </p>';
+    }}
+    change = (e) => {
+        let data = { ...this.state }
+        if (e.target.id == 'parent-radio') {
+            this.setState({
+                parent: true,
+            })
+        }
+        else if (e.target.id == 'child-radio') {
+            this.setState({
+                parent: false,
+            })
+        }
+        else {
+            data[e.target.name] = e.target.value
+            this.setState(data)
+        }
     }
-    }
-	
+
     render() {
         var shown = {
-			display: this.state.parent ? "none" : "block" 
-		};
-		
+            display: this.state.parent ? "none" : "block"
+        };
+
         return (
             <div>
                 <h1>Sign Up</h1>
                 <Col sm={3} md={4} className="mx-auto">
+                    <div id="error"></div>
+                    <Dialog
+                    id = "done"
+                    open={this.state.open}
+                    aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title"> Registered </DialogTitle>
+                        <DialogContentText>
+                        You are Now Registered Go Home and SignIn to the  website
+                        </DialogContentText>
+                    <DialogActions>
+                        <Button onClick={() =>{ window.location = '/Home'}} color="primary">
+                            Go to home Page
+            </Button>
+                    </DialogActions>
+                </Dialog>
                     <Form>
                         <Form.Group controlId="formBasicName">
                             <Form.Label sm={2}>Full Name</Form.Label>
-                            <Form.Control type="text" name="name" placeholder="FullName" onChange={this.change} />
+                            <Form.Control type="text" name="name" placeholder="FullName" onChange={this.change} required />
                         </Form.Group>
                         <Form.Group controlId="formBasicUsername">
                             <Form.Label sm={2}>Username</Form.Label>
@@ -72,7 +139,7 @@ class SignUp extends Component {
                                     id='child-radio'
                                     name="Radios"
                                     label='Child'
-                                    defaultChecked/>
+                                    defaultChecked />
                                 <Form.Check
                                     inline
                                     type='radio'
@@ -86,9 +153,11 @@ class SignUp extends Component {
                             <Form.Label sm={2}>Your Parent Email</Form.Label>
                             <Form.Control type="email" name="parentemail" placeholder="Enter Your Parent Email" onChange={this.change} />
                         </Form.Group>
-                        <Button variant="primary"  color="primary" size="lg" block onClick={() => {this.props.register(this.state)}}>Sign Up</Button>
+                        <Button variant="primary" color="primary" size="lg" block onClick={this.submit}>Sign Up</Button>
                     </Form>
                 </Col>
+
+
             </div>
         )
     }

@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
-// import Profile from "./components/Profile";
-// import Nav from 'react-bootstrap/Nav';
-// import Navbar from 'react-bootstrap/Navbar'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-// import FormGroup from 'react-bootstrap/FormGroup'
 import Col from 'react-bootstrap/Col'
-// import FormControl from 'react-bootstrap/FormControl'
-// import {
-//     BrowserRouter as Router,
-//     Route,
-//     // Link
-// } from 'react-router-dom';
+import SweetAlert from 'sweetalert-react';
+
 
 class SignIn extends Component {
     render() {
@@ -32,8 +24,10 @@ class SignIn extends Component {
                         </Form.Group>
                         <Button variant="primary" type="submit" color="primary" size="lg" block onClick={this.props.login}  >
                             Login</Button>
+     
                     </Form>
                 </Col>
+             
             </div>
         )
     }

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const userSchema = require('./user').userSchema 
+const userSchema = require('./User').userSchema 
 
 const postSchema = new mongoose.Schema({
     title : {type: String, required : true, unique: true},

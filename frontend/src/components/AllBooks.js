@@ -47,7 +47,7 @@ class AllBooks extends Component {
             })
             .catch(err => console.log(err))
     }
-
+//add new book to database
     AddNewBook = () => {
         axios.post("http://localhost:3003/books", {
             //publishedBy:{ type: mongoose.Schema.Types.ObjectId, ref: 'User' },        
@@ -65,6 +65,7 @@ class AllBooks extends Component {
                 //     }) //set the state
                 // }
                 this.handleClose()
+                this.getAllBooks()
             })
             .catch(err => console.log(err))
     }

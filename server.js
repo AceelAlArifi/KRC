@@ -44,10 +44,7 @@ app.use(session({
 //use routs 
 app.use('/books', bookRouts);
 app.use('/auth', require('./routes/auth.routes'))
-
-
-
-
+app.use('/users', require('./routes/users.routes'))
 
 
 //cannot find route

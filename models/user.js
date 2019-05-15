@@ -14,7 +14,6 @@ const userSchema = new Schema({
     kids:[{ type: Schema.Types.ObjectId, ref : 'User'}]
 },{timestamps: true})
 
-
 userSchema.pre('save',function(next){
     let user = this
 

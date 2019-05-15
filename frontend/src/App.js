@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios'
-// import jwt_decode from 'jwt-decode'
 import * as JWT from 'jwt-decode';
-
 import Navbar from 'react-bootstrap/Navbar'
 // import Button from 'react-bootstrap/Button'
 // import Form from 'react-bootstrap/Form'
@@ -33,8 +31,6 @@ let header = {
     "Authorization": `Bearer ${getToken()}`
   }
 }
-
-
 class App extends Component {
 
   state = {
@@ -43,47 +39,60 @@ class App extends Component {
     errorMsg: '',
     isAuthenticated: false,
     hasError: false,
-    userData: {}
   }
   changeHandler = (e) => {
     let data = { ...this.state }
     data[e.target.name] = e.target.value
     this.setState(data)
   }
+
   //get the books (recent, rates or whatever)
   getAllBooks = () => {
     axios.get("http://localhost:3003/books")
       .then(data => {
         console.log("from my api", data)
-        // let temp = { ...this.state } // copy
-        // temp.todos = data.data.todos // set to api response
-        // this.setState(temp) //set the state
       })
       .catch(err => console.log(err))
   }
+
   //register post request 
   registerHandler = (user_data) => {
-    //  e.preventDefault()
-    // console.log(e);
     console.log(user_data);
-    // this.registerHandler = this.registerHandler.bind(this)
+    var register_data ={
+      email: user_data.email,
+      password: user_data.password,
+      parent: user_data.parent,
+      name: user_data.name,
+      userName: user_data.username,
+    }
     //all register data how can we get it by sending it 
-    //parentUser:{ type: Schema.Types.ObjectId, ref : 'User'},
     //kids:[{ type: Schema.Types.ObjectId, ref : 'User'}]
+    if(!user_data.parent){
+      axios.get(`http://localhost:3003/users/${user_data.parentemail}`)
+      .then(response => {
+        console.log(response.data.parent._id)
+        register_data.parentUser = response.data.parent
+        console.log(register_data)
+        this.submitRegister(register_data)
+    })
+  }
+    else{
+      this.submitRegister(user_data)
+    }
+  
+
+  }
+  submitRegister =(user_data) =>{
 
     axios.post('http://localhost:3003/auth/register',
-      {
-        email: user_data.email,
-        password: user_data.password,
-        parent: user_data.parent,
-        name: user_data.name,
-        userName: user_data.username
-      })
-      .then(response => {
-        console.log(response.data)
-        //redirect to hoome page 
-      }).catch(err => console.log(err))
-  }
+    user_data)
+    .then(response => {
+      console.log(response.data)
+      
+      window.location = '/Home';
+    }).catch(err => console.log(err))
+    //401 already on data pase 
+      }
   //login post request 
   loginHandler = (e) => {
     e.preventDefault()
@@ -96,7 +105,7 @@ class App extends Component {
           data.user = response.data.user
           data.isAuthenticated = true
           data.hasError = false
-          data.userData = response.data.user
+          //data.userData = response.data.user
           this.setState(data)
           //redirect to home page
           window.location = '/Home';
@@ -120,33 +129,35 @@ class App extends Component {
     data.email = ""
     data.password = ""
     data.books = []
-    data.userData = {}
+    //data.userData = {}
     this.setState(data)
   }
-
+//custumize drop down depend on user type
   userType = () => {
     if (this.state.isAuthenticated) {
-      // if(){ //get user type
+      var dropdown 
+      if(this.state.user.parent){ //get user type
+       dropdown = <Dropdown.Item href="/Kids">My Kids</Dropdown.Item>
+      }
+      else{
+        dropdown = <Dropdown.Item href="/Lists">My Lists</Dropdown.Item>
+
+      }
       return <Dropdown id="profile-menu">
-        <Dropdown.Toggle id="dropdown01" data-toggle="dropdown" className="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-          Hello {this.state.userData.name}
-        </Dropdown.Toggle>
-        <Dropdown.Menu className="dropdown-menu">
-          <Dropdown.Item href="/Profile" className="dropdown-item">My Profile</Dropdown.Item>
-          <Dropdown.Item href="/Lists">My Lists</Dropdown.Item>
-          <Dropdown.Item href="/Kids">My Kids</Dropdown.Item>
-          <Nav.Link href="/Home" onClick={this.logout} className="dropdown-item">Sing out</Nav.Link>
-        </Dropdown.Menu>
-      </Dropdown>
-      // }
+      <Dropdown.Toggle id="dropdown01" data-toggle="dropdown" className="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+        Hello {this.state.user.name}
+      </Dropdown.Toggle>
+      <Dropdown.Menu className="dropdown-menu">
+        <Dropdown.Item href="/Profile" className="dropdown-item">My Profile</Dropdown.Item>
+        {dropdown}
+        <Nav.Link href="/Home" onClick={this.logout} className="dropdown-item">Sing out</Nav.Link>
+      </Dropdown.Menu>
+    </Dropdown>
     } else {
       return <><Nav.Link href="/SignUp">Sign Up</Nav.Link>
         <Nav.Link href="/SignIn">Sign In</Nav.Link>
       </>
     }
-
-
-
   }
   componentDidMount() {
     /*
@@ -166,7 +177,6 @@ class App extends Component {
       data.isAuthenticated = true
       this.setState(data)
       console.log(this.state)
-
     }
   }
 

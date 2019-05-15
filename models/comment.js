@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const userSchema = require('./user').userSchema 
+const userSchema = require('./User').userSchema 
 
 const commentSchema = new mongoose.Schema({
     content : {type: String, required : true, maxlength: 500 },

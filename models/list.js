@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const userSchema = require('./user').userSchema 
+const userSchema = require('./User').userSchema 
 const bookSchema = require('./book').bookSchema 
 
 const listSchema = new mongoose.Schema({
