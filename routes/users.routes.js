@@ -20,6 +20,15 @@ router.get('/:parentEmail', (request, response)=>{
   })
 })
 
+// router.get('/:uId', (request, response)=>{
+//   User.findOne({ 'email':request.params.uId  })
+//   .then(user => {
+//     response.status(200).json({ parent : user})
+//   }).catch(err => {
+//    response.send({message : err})
+//   })
+// })
+
 router.get('kids/:parentId', (request, response)=>{
   User.findById(request.params.parentId)
   .then(kids => {
