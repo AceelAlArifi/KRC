@@ -5,12 +5,9 @@
   src: local('Unkempt'), url(http://themes.googleusercontent.com/static/fonts/unkempt/v4/opYoFyuMZRiBj_IeDTrh8g.ttf) format('truetype');
 }
 
-
 .App {
   text-align: center;
 }
-
-
 
 .App-link {
 background-color: rgb(234,109	,110);
@@ -25,41 +22,23 @@ background-color: rgb(234,109	,110);
   }
 }
 
-
-
-body {
-    /* background Edit  */
-/* font-family: 'Unkempt',display; */
-background-image: url(https://imgix.bustle.com/mic/uko1l8jnlya0e9fvnucseb1tf0kfod8qlxcxqraq6id9tx8xwok9wjbms5epy98w.jpg?w=1020&h=576&fit=crop&crop=faces&auto=format&q=70);
-background-repeat: no-repeat;
-background-color: rgb(106,153,156);
-height: 100%; 
-  /* Center and scale the image nicely */
-position: relative;
-/* opacity: 0.65; */
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-display: block;
-margin: 0;
-color: #777;
-}
-
-.welcome {
-color: rgb(  234,109	,110);;
-padding: 18px;
-font-size: 50px;
-letter-spacing: 10px;
-font: 400 40px/1.8 "Lato", sans-serif;
-margin-top: 35%;
-}
-
-
 .mr-auto{
 color: #fff;
 padding: 5px;
 letter-spacing: 2px;
 font: 400 15px/1.8 "Lato", sans-serif;
+}
+
+header .logo {
+	
+	z-index: auto;
+    display: inline;
+	font-size: calc(2.8em + 2.6vw);
+	font-weight: 700;
+	letter-spacing: .01em;
+	padding: 2rem 0 0 4.5rem;
+	text-shadow: .022em .022em .022em #111;
+	color: #fff;
 }
 
 .allbooks{
