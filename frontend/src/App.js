@@ -3,11 +3,7 @@ import './App.css';
 import axios from 'axios'
 import * as JWT from 'jwt-decode';
 import Navbar from 'react-bootstrap/Navbar'
-// import Button from 'react-bootstrap/Button'
-// import Form from 'react-bootstrap/Form'
-// import FormControl from 'react-bootstrap/FormControl'
 import Nav from 'react-bootstrap/Nav'
-// import Alert from 'react-bootstrap/Alert'
 import Dropdown from 'react-bootstrap/Dropdown'
 
 import { getToken, setToken, logout } from './services/auth'
@@ -25,6 +21,7 @@ import AllBooks from "./components/AllBooks";
 import Events from "./components/Events";
 import Posts from "./components/Posts";
 import Profile from "./components/Profile";
+
 
 
 let header = {
@@ -184,14 +181,14 @@ class App extends Component {
       this.setState(data)
     }
   }
-
   render() {
     const showLogin = this.userType()
     return (
       <Router>
         <Navbar bg="light" expand="lg" >
           {/* className="navbar navbar-expand navbar-dark" */}
-          <Navbar.Brand href="/Home" >Book Explorers</Navbar.Brand>
+          <Navbar.Brand href="/Home"><img src="https://ibb.co/dWFMZBh"/>
+          </Navbar.Brand>
           {/* className="navbar-brand fas fa-apple-alt fa-lg" */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

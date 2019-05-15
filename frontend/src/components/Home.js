@@ -10,7 +10,7 @@ class Home extends Component {
                 <h2 className="welcome">
                 Welcome To Book Explorers
                </h2>
-                <a href="#" className="roll-button button-slider">Click to begin</a>
+                <a href="/Posts" className="roll-button button-slider">Start Discovering!</a>
             </div>
         )
     }

@@ -1,0 +1,37 @@
+background-color: rgb(234,109	,110);
+background-color: #4A4A79;
+background-color: rgb(172,142,184);
+background-color: #337BCE;
+background-color: #6388D6;
+background-color: rgb(118,93,116);	
+background-color: rgb(80,83,93);	
+background-color: #C0DDED;
+background-color: #8AC1E3;
+background-color: #DFE8F0;
+background-color: #59ACD9;
+background-color: #3C4366;
+background-color: #2B232A;
+background-color: #283C61;
+background-color: #f0ab9f;
+background-color:#FF6D70;
+
+
+
+
+header .logo {
+	
+	z-index: auto;
+    display: inline;
+	font-size: calc(2.8em + 2.6vw);
+	font-weight: 700;
+	letter-spacing: .01em;
+	padding: 2rem 0 0 4.5rem;
+	text-shadow: .022em .022em .022em #111;
+	color: #fff;
+}
+
+
+
+.Logo {
+  background-image: url(./logo.png);
+}
