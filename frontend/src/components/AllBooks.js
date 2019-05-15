@@ -39,7 +39,6 @@ class AllBooks extends Component {
             .then(data => {
                 console.log("from my api", data)
                 if (data.data.books.length > 0) {
-                     console.log(data.books)
                     this.setState({
                         books: data.data.books
                     }) //set the state

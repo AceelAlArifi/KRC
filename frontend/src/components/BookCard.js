@@ -16,7 +16,7 @@ class BookCard extends Component {
                     <Card.Body>
                         <Card.Title>{this.props.book.title}</Card.Title>
                         <Card.Text>
-                            By {this.props.book.auther}
+                            By {this.props.book.author}
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
