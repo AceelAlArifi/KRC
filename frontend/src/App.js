@@ -24,6 +24,8 @@ import SignIn from "./components/SignIn";
 import AllBooks from "./components/AllBooks";
 import Events from "./components/Events";
 import Posts from "./components/Posts";
+import Profile from "./components/Profile";
+
 
 let header = {
   headers: {
@@ -93,7 +95,6 @@ class App extends Component {
     user_data)
     .then(response => {
       console.log(response.data)
-      
       window.location = '/Home';
     }).catch(err => console.log(err))
     //401 already on data pase 
@@ -181,7 +182,6 @@ class App extends Component {
       data.user = decoded
       data.isAuthenticated = true
       this.setState(data)
-      console.log(this.state)
     }
   }
 
@@ -205,8 +205,6 @@ class App extends Component {
         </Navbar>
 
         <div className="App">
-          {/* <Alert color="danger" isopen={this.state.hasError} toggle={this.onDismiss} fade={false}>{this.state.errorMsg}</Alert> */}
-
           <Route path='/Home' component={Home} />
           <Route path='/SignUp' render={() => (
             <SignUp change={this.changeHandler} register={this.registerHandler} />
@@ -217,6 +215,9 @@ class App extends Component {
           <Route path='/AllBooks' component={AllBooks} />
           <Route path='/Events' component={Events} />
           <Route path='/Posts' component={Posts} />
+          <Route path='/Profile'  render={() => (
+            <Profile user={this.state.user.name}/>
+          )} /> 
         </div>
         <footer className="footer">
           <div className="container">
