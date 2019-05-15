@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import logo from './logo.png';
+import logo from './logo.png';
 import './App.css';
 import axios from 'axios'
 import * as JWT from 'jwt-decode';
@@ -184,7 +184,7 @@ class App extends Component {
       <Router>
         <Navbar bg="light" expand="lg" >
           {/* className="navbar navbar-expand navbar-dark" */}
-          <Navbar.Brand href="/Home"><img src="./components/Logo.png" className="logo"/>
+          <Navbar.Brand href="/Home"><img src={logo} alt="Logo" />;/>
           </Navbar.Brand>
           {/* className="navbar-brand fas fa-apple-alt fa-lg" */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
