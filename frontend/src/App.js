@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.png';
 import './App.css';
 import axios from 'axios'
 import * as JWT from 'jwt-decode';
@@ -21,7 +20,6 @@ import SignIn from "./components/SignIn";
 import AllBooks from "./components/AllBooks";
 import Events from "./components/Events";
 import Posts from "./components/Posts";
-import Logo from "./components/Logo.png";
 
 
 let header = {
@@ -189,7 +187,7 @@ class App extends Component {
       <Router>
         <Navbar bg="light" expand="lg" >
           {/* className="navbar navbar-expand navbar-dark" */}
-          <Navbar.Brand href="/Home"><img src="./components/Logo.png" className="logo"/>
+          <Navbar.Brand href="/Home"><img src="https://ibb.co/dWFMZBh"/>
           </Navbar.Brand>
           {/* className="navbar-brand fas fa-apple-alt fa-lg" */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
