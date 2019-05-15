@@ -71,6 +71,11 @@ class App extends Component {
       .then(response => {
         console.log(response.data.parent._id)
         register_data.parentUser = response.data.parent
+        // axios.get(`http://localhost:3003/users/${user_data.parentemail}`)
+        // .then(response => {
+        //   console.log(response.data.parent._id)
+        //   register_data.parentUser = response.data.parent
+        // })
         console.log(register_data)
         this.submitRegister(register_data)
     })

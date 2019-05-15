@@ -44,13 +44,28 @@ router.post('/register', (request, response) => {
   }
   if (!request.body.parent) {
     data.parentUser = request.body.parentUser._id
+    
   }
+  
 
   let user = new User(data)
-  user.save().then(() => {
+  user.save().then((user) => {
+        //add kid to parent array kid 
+    if (!user.parent) { 
+      User.
+      update(
+        { _id: request.body.parentUser._id },
+        { $addToSet: { kids: user._id}}
+         ).then(()=>{
+          console.log("kid added to the parent") 
+         }).catch(err => {
+          console.log("error " +err ) 
+      
+        })
+    }
     response.status(200).json({ message: "regestered" })
   }).catch(err => {
-    response.status(401).json({ message: "not found" })
+    response.status(401).json({ message: "already on database" })
 
   })
 
