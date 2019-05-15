@@ -46,4 +46,35 @@ a:hover, a:focus{
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-.home_div{}
+.home_div{
+    /* background Edit  */
+/* font-family: 'Unkempt',display; */
+background-image: url(https://imgix.bustle.com/mic/uko1l8jnlya0e9fvnucseb1tf0kfod8qlxcxqraq6id9tx8xwok9wjbms5epy98w.jpg?w=1020&h=576&fit=crop&crop=faces&auto=format&q=70);
+background-repeat: no-repeat;
+background-color: rgb(106,153,156);
+height: 100%; 
+  /* Center and scale the image nicely */
+position: relative;
+/* opacity: 0.65; */
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+display: block;
+margin: 0;
+color: #777;
+padding: 18px;
+
+}
+
+
+.welcome {
+color: rgb(  234,109	,110);;
+padding: 18px;
+font-size: 50px;
+letter-spacing: 10px;
+font: 400 40px/1.8 "Lato", sans-serif;
+margin-top: 35%;
+}
+
+
+
