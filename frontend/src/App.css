@@ -75,6 +75,8 @@ a:hover, a:focus{
 img {
     vertical-align: middle;
     border-style: none;
+    background-repeat: no-repeat;
+
     /* height: 60px; */
 }
 
