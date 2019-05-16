@@ -22,8 +22,6 @@ import Events from "./components/Events";
 import Posts from "./components/Posts";
 import Profile from "./components/Profile";
 
-
-
 let header = {
   headers: {
     "Content-Type": "application/json",
@@ -174,11 +172,13 @@ class App extends Component {
       //2. PAYLOAD:DATA
       //3. SIGNATURE
       let decoded = JWT(getToken()) //decode token
-      console.log(this.state)
-      let data = { ...this.state }
+      console.log(decoded)
+      let data = {...this.state}
       data.user = decoded
       data.isAuthenticated = true
       this.setState(data)
+      console.log(this.state)
+
     }
   }
   render() {
@@ -212,8 +212,8 @@ class App extends Component {
           <Route path='/AllBooks' component={AllBooks} />
           <Route path='/Events' component={Events} />
           <Route path='/Posts' component={Posts} />
-          <Route path='/Profile'  render={() => (
-            <Profile user={this.state.user.name}/>
+          <Route path='/Profile'  render={(props) => (
+            <Profile {...props} user={this.state.user.name}/>
           )} /> 
         </div>
         <footer className="footer">
