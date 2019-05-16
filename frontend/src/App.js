@@ -143,7 +143,7 @@ class App extends Component {
 
       }
       return <Dropdown id="profile-menu">
-      <Dropdown.Toggle id="dropdown01" data-toggle="dropdown" className="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+      <Dropdown.Toggle id="dropdown01" data-toggle="dropdown" className="nav-link dropdown-toggle" variant="light" aria-haspopup="true" aria-expanded="false">
         Hello {this.state.user.name}
       </Dropdown.Toggle>
       <Dropdown.Menu className="dropdown-menu">
@@ -190,7 +190,7 @@ class App extends Component {
       <Router>
         <Navbar bg="light" expand="lg" >
           <div className="logo">
-          <Navbar.Brand  href="/Home"><img src="https://i.ibb.co/BVMhP4J/logo1.png"/> Book Explorers
+          <Navbar.Brand  href="/Home"><img src="https://i.ibb.co/BVMhP4J/logo1.png"  height= "70px"/> Book Explorers
           </Navbar.Brand>
           </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -224,7 +224,7 @@ class App extends Component {
             <Book {...props} openBook={this.openBook}/>
           )} /> 
         </div>
-        <footer className="footer">
+        <footer className="footer-copyright text-left py-3">
           <div className="container">
             <span className="text-center">© 2019 By Nora and Aceel</span>
           </div>

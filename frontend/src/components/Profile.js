@@ -71,12 +71,12 @@ class Profile extends Component {
         return (
            
             <div>
-                <h1 className="welcome"> {this.state.name} Your Profile</h1>
-                <Col className="justify-content-md-center">
-                    <Col xs lg="2"> User Name:  {this.state.userName}  </Col>
-                    <Col xs lg="2"> Name:  {this.state.name}    </Col>
-                    <Col xs lg="2"> Email:  {this.state.email}    </Col>
-                </Col>
+                <h1 className="welcome"> {this.state.name} Profile</h1>
+                <div className=" justify-content-md-center welcome" >
+                    <h3 xs lg="2"> User Name:  {this.state.userName}  </h3>
+                    <h3 xs lg="2"> Name:  {this.state.name}    </h3>
+                    <h3 xs lg="2"> Email:  {this.state.email}    </h3>
+                </div>
                 <br></br>
                 <div className="justify-content-md-center" style={show}>
                     <h2>Kids Activites </h2>

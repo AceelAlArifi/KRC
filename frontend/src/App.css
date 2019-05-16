@@ -77,7 +77,6 @@ img {
     border-style: none;
     background-repeat: no-repeat;
 
-    /* height: 60px; */
 }
 
 
@@ -96,4 +95,13 @@ img {
 
 Button{
 color: #3A5D61;
+}
+.year-color{
+  color: rgb(  234,109	,110);
+
+}
+footer{
+  align-self: flex-end;
+  justify-self: baseline;
+
 }
