@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import Nav from 'react-bootstrap/Nav';
 import CardColumns from 'react-bootstrap/CardColumns'
-
-// import Card from 'react-bootstrap/Card'
 import BookCard from './BookCard'
 // import Book from "./components/Book";
-// import Button from 'react-bootstrap/Button'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -76,7 +72,7 @@ class AllBooks extends Component {
 
     render() {
         var allbooks = this.state.books.map(book => {
-            return <BookCard key={book._id} book={book} />
+            return <BookCard key={book._id} book={book} openBook = {this.props.openBook} />
         })
         return (
             <div>

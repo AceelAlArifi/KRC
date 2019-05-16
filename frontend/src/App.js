@@ -20,7 +20,7 @@ import AllBooks from "./components/AllBooks";
 import Events from "./components/Events";
 import Posts from "./components/Posts";
 import Profile from "./components/Profile";
-
+import Book from './components/Book'
 let header = {
   headers: {
     "Content-Type": "application/json",
@@ -158,6 +158,11 @@ class App extends Component {
       </>
     }
   }
+  openBook = (id) => {
+    console.log("bookk")
+    return <Book  />
+
+  }
   componentDidMount() {
     /*
       To stay logged in every time the App.js is rendered
@@ -207,11 +212,16 @@ class App extends Component {
           <Route path='/SignIn' render={() => (
             <SignIn change={this.changeHandler} login={this.loginHandler} />
           )} />
-          <Route path='/AllBooks' component={AllBooks} />
+          <Route path='/AllBooks' render={(props) => (
+            <AllBooks {...props} openBook={this.openBook}/>
+          )}/>
           <Route path='/Events' component={Events} />
           <Route path='/Posts' component={Posts} />
           <Route path='/Profile'  render={(props) => (
             <Profile {...props} user={this.state.user.name}/>
+          )} /> 
+            <Route path='/Book/:id'  render={(props) => (
+            <Book {...props} openBook={this.openBook}/>
           )} /> 
         </div>
         <footer className="footer">
