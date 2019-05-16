@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Nav from 'react-bootstrap/Nav';
-import CardGroup from 'react-bootstrap/CardGroup'
+// import Nav from 'react-bootstrap/Nav';
+import CardColumns from 'react-bootstrap/CardColumns'
 
 // import Card from 'react-bootstrap/Card'
 import BookCard from './BookCard'
@@ -81,16 +81,18 @@ class AllBooks extends Component {
         return (
             <div>
                 <div>
-                    <Nav className="allbooks">
-                        <h1>Discover All Books</h1>
-                    </Nav>
+                    <img src="https://i.ibb.co/kKnZLJ2/bookexploreres.png" alt="Logo" />
                 </div>
-                <CardGroup>
+                <div>
+                    {/* <Nav className="allbooks"> */}
+                    <p className="welcome">Discover All Books</p>
+                    {/* </Nav> */}
+                </div>
+                <CardColumns>
                     {allbooks}
-                </CardGroup>
-                <div className="add-button">
-                <Button onClick={this.handleClickOpen}> Add New Book </Button>
-                </div>
+                </CardColumns>
+
+                <div onClick={this.handleClickOpen} className="roll-button button-slider">Add New Book</div>
 
                 <Dialog
                     open={this.state.open}

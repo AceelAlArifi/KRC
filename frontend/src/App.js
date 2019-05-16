@@ -12,7 +12,6 @@ import {
   Route,
   // Link
 } from 'react-router-dom';
-
 //pages pathes 
 import Home from "./components/Home";
 import SignUp from "./components/SignUp";
@@ -185,10 +184,10 @@ class App extends Component {
     return (
       <Router>
         <Navbar bg="light" expand="lg" >
-          {/* className="navbar navbar-expand navbar-dark" */}
-          <Navbar.Brand href="/Home"><img src="https://ibb.co/dWFMZBh"/>
+          <div className="logo">
+          <Navbar.Brand  href="/Home"><img src="https://i.ibb.co/BVMhP4J/logo1.png"/> Book Explorers
           </Navbar.Brand>
-          {/* className="navbar-brand fas fa-apple-alt fa-lg" */}
+          </div>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
@@ -217,18 +216,12 @@ class App extends Component {
         </div>
         <footer className="footer">
           <div className="container">
-            <span className="text-center">© 2019 By Nora and Accel</span>
+            <span className="text-center">© 2019 By Nora and Aceel</span>
           </div>
         </footer>
       </Router>
-
     )
   }
 }
 
-export default App
-
-
-
-
-
+export default App;

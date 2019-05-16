@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: 'Unkempt';
   font-style: normal;
@@ -29,14 +30,6 @@ letter-spacing: 2px;
 font: 400 15px/1.8 "Lato", sans-serif;
 }
 
-.allbooks{
-color: rgb(  234,109	,110);;
-padding: 18px;
-font-size: 50px;
-letter-spacing: 10px;
-font: 400 40px/1.8 "Lato", sans-serif;
-margin-top: 35%;
-}
 
 .add-button{
   background-color: rgb(  234,109	,110);
@@ -77,4 +70,30 @@ a:hover, a:focus{
     -ms-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    background-repeat: no-repeat;
+
+    /* height: 60px; */
+}
+
+
+.navbar-brand {
+    color: rgb(  234,109	,110);
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    /* height: 60px; */
+}
+
+
+Button{
+color: #3A5D61;
 }
