@@ -65,8 +65,10 @@ class Profile extends Component {
         var show = { display: this.state.parent ? "block" : "none" }
         console.log(this.state.kidsArray)
         return (
+           
             <div>
-                <h1>{this.state.name}  Profile {this.props.user}</h1>
+                <h1 className="welcome"> {this.state.name} Your Profile</h1>
+                <h1> Profile {this.props.user}</h1>
                 <Col className="justify-content-md-center">
                     <Col xs lg="2"> User Name:  {this.state.userName}  </Col>
                     <Col xs lg="2"> Name:  {this.state.name}    </Col>

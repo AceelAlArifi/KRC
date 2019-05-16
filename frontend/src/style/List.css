@@ -1,0 +1,35 @@
+.card-group {
+  float:none;
+}
+.card {
+float:none;
+width: 20%;
+height:50%
+}
+
+.card-img-top {
+    width: 50%;
+    height: 70%;
+}
+
+.card-img-top cardimg {
+     width: 50%;
+    height: 70%; 
+}
+
+
+img .card-img-top {
+    vertical-align: middle;
+    border-style: none;
+    /* height: 100px; */
+}
+
+
+.welcomebooks {
+color: rgb(234,109,110);
+padding: 18px;
+font-size: 50px;
+letter-spacing: 10px;
+font: 400 40px/1.8 "Lato", sans-serif;
+/* margin-top: 35%; */
+}

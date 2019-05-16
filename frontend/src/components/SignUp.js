@@ -88,8 +88,14 @@ class SignUp extends Component {
         };
 
         return (
+         
             <div>
-                <h1>Sign Up</h1>
+                <div>
+                    <img src="https://i.ibb.co/kKnZLJ2/bookexploreres.png" alt="Logo" />
+                </div>
+                <div>
+                    <h1 className="welcome"> Sign Up</h1>
+                </div>
                 <Col sm={3} md={4} className="mx-auto">
                     <div id="error"></div>
                     <Dialog
@@ -151,7 +157,7 @@ class SignUp extends Component {
                             <Form.Label sm={2}>Your Parent Email</Form.Label>
                             <Form.Control type="email" name="parentemail" placeholder="Enter Your Parent Email" onChange={this.change} />
                         </Form.Group>
-                        <Button variant="primary" color="primary" size="lg" block onClick={this.submit}>Sign Up</Button>
+                        <Button variant="light" color="primary" size="lg" block onClick={this.submit}>Sign Up</Button>
                     </Form>
                 </Col>
 
