@@ -1,39 +1,104 @@
 import React, { Component } from 'react';
 import * as JWT from 'jwt-decode';
 import { getToken, setToken, logout } from '../services/auth'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Tab from 'react-bootstrap/Tab'
+import Nav from 'react-bootstrap/Nav'
+import axios from 'axios'
 
 class Profile extends Component {
 
-  state = {
-    user: '',
-}
+    state = {
+        kidsArray: []
+    }
     componentDidMount() {
-        console.log(this.props)
-        if (getToken()) {
-            //remember the token consists of 3 parts
-            //1. HEADER:ALGORITHM & TOKEN TYPE
-            //2. PAYLOAD:DATA
-            //3. SIGNATURE
-            let decoded = JWT(getToken()) //decode token
-            let data = { ...this.state }
-            data.user = decoded
-            this.setState(data)
-            console.log(this.state)
 
-          }
-          console.log(this.state)
+        if (getToken()) {
+            let decoded = JWT(getToken()) //decode token
+            this.setState({
+                id: decoded._id,
+                email: decoded.email,
+                kids: decoded.kids,
+                name: decoded.name,
+                parent: decoded.parent,
+                password: decoded.password,
+                userName: decoded.userName,
+
+            })
+            this.getTabs(decoded.parent, decoded._id)
         }
+    }
+    getTabs = (p, id) => {
+        if (p) {
+            axios.get(`http://localhost:3003/users/kids/${id}`)
+                .then(data => {
+                    console.log("from my api", data)
+                    data.data.forEach(dataelement => {
+                        this.setState(state => {
+                            const kidsArray = state.kidsArray.push(dataelement)
+                        })
+                    })
+                })
+                .catch(err => console.log(err))
+        }
+    }
     render() {
+        var tabs, tabcontent;
+        if (this.state.kidsArray) {
+            console.log("true")
+            tabs = this.state.kidsArray.map(kid => {
+                return  kid
+                // <Nav.Item>
+                //     <Nav.Link eventKey={kid._id}>{kid.name}</Nav.Link>
+                // </Nav.Item>;
+            })
+            tabcontent = this.state.kidsArray.map(kid => {
+                return <Tab.Pane eventKey={kid._id}>
+                    <p>{kid.name}</p>
+                </Tab.Pane>;
+            })
+            console.log(tabs)
+
+        }
+
+        var show = { display: this.state.parent ? "block" : "none" }
+        console.log(this.state.kidsArray)
         return (
            
             <div>
-                <h1 className="welcome">Your Profile</h1>
-
+                <h1 className="welcome"> {this.state.name} Your Profile</h1>
+                <h1> Profile {this.props.user}</h1>
+                <Col className="justify-content-md-center">
+                    <Col xs lg="2"> User Name:  {this.state.userName}  </Col>
+                    <Col xs lg="2"> Name:  {this.state.name}    </Col>
+                    <Col xs lg="2"> Email:  {this.state.email}    </Col>
+                </Col>
+                <br></br>
+                <div className="justify-content-md-center" style={show}>
+                    <h2>Kids Activites </h2>
+                    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+                        <Row>
+                            <Col sm={3}>
+                                <Nav variant="pills" className="flex-column">
+                                    {this.state.kidsArray.map(kid => {
+                return   <Nav.Item>
+                    <Nav.Link eventKey={kid._id}>{kid.name}</Nav.Link>
+                </Nav.Item>;
+            })}
+                                    
+                                </Nav>
+                            </Col>
+                            <Col sm={9}>
+                                <Tab.Content>
+                                    {tabcontent}
+                                </Tab.Content>
+                            </Col>
+                        </Row>
+                    </Tab.Container>
+                </div>
             </div>
         )
     }
 }
-
-
-
 export default Profile
