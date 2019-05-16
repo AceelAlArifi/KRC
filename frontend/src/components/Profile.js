@@ -27,7 +27,7 @@ class Profile extends Component {
         return (
            
             <div>
-                <h1>Your Profile</h1>
+                <h1 className="welcome">Your Profile</h1>
 
             </div>
         )

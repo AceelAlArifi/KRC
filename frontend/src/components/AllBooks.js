@@ -85,7 +85,7 @@ class AllBooks extends Component {
                 </div>
                 <div>
                     {/* <Nav className="allbooks"> */}
-                    <p className="welcomebooks">Discover All Books</p>
+                    <p className="welcome">Discover All Books</p>
                     {/* </Nav> */}
                 </div>
                 <CardColumns>

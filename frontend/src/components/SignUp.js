@@ -94,7 +94,7 @@ class SignUp extends Component {
                     <img src="https://i.ibb.co/kKnZLJ2/bookexploreres.png" alt="Logo" />
                 </div>
                 <div>
-                <h1>Sign Up</h1>
+                    <h1 className="welcome"> Sign Up</h1>
                 </div>
                 <Col sm={3} md={4} className="mx-auto">
                     <div id="error"></div>

@@ -16,7 +16,6 @@ class Book extends Component {
                 <h3>Age range</h3>
 
                 {/* <div className="Reviews">
-
                 </div> */}
             </div>
         )

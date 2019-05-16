@@ -9,7 +9,7 @@ class Posts extends Component {
                     <img src="https://i.ibb.co/kKnZLJ2/bookexploreres.png" alt="Logo" />
                 </div>
                 <div>
-                <h1>Discover new intresting stuff</h1>
+                    <h1 className="welcome">Discover new intresting stuff</h1>
                 </div>
             </div>
         )

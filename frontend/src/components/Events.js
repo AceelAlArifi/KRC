@@ -9,7 +9,7 @@ class Events extends Component {
                     <img src="https://i.ibb.co/kKnZLJ2/bookexploreres.png" alt="Logo" />
                 </div>
                 <div>
-                <h1>Find an Event to join</h1>
+                    <h1 className="welcome">Find an Event to join</h1>
                 </div>
             </div>
         )
