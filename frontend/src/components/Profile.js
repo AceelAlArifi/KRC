@@ -33,40 +33,44 @@ class Profile extends Component {
         if (p) {
             axios.get(`http://localhost:3003/users/kids/${id}`)
                 .then(data => {
-                    console.log("from my api", data)
-                    data.data.forEach(dataelement => {
-                        this.setState(state => {
-                            const kidsArray = state.kidsArray.push(dataelement)
-                        })
-                    })
+                    var temp = { ...this.state }
+                    temp.kidsArray = data.data
+                    this.setState(temp)
+
+                    // data.data.forEach(dataelement => {
+
+                    //     this.setState(state => {
+                    //         const kidsArray = state.kidsArray.push(dataelement)
+                    //     })
+                    // })
                 })
                 .catch(err => console.log(err))
         }
     }
     render() {
-        var tabs, tabcontent;
-        if (this.state.kidsArray) {
-            console.log("true")
-            tabs = this.state.kidsArray.map(kid => {
-                return  kid
-                // <Nav.Item>
-                //     <Nav.Link eventKey={kid._id}>{kid.name}</Nav.Link>
-                // </Nav.Item>;
-            })
-            tabcontent = this.state.kidsArray.map(kid => {
-                return <Tab.Pane eventKey={kid._id}>
+        var tabs;
+        var tabcontent;
+        if (this.state.kidsArray.length > 0) {
+            tabs = this.state.kidsArray.map(kid =>
+                <Nav.Item>
+                    <Nav.Link eventKey={kid._id}>{kid.name}</Nav.Link>
+                </Nav.Item>
+            )
+            tabcontent = this.state.kidsArray.map(kid =>
+                <Tab.Pane eventKey={kid._id}>
                     <p>{kid.name}</p>
-                </Tab.Pane>;
-            })
-            console.log(tabs)
+                </Tab.Pane>
+            )
+
+        } else {
+            tabcontent = <h3>You don't have any kid signed up into the website</h3>
 
         }
 
         var show = { display: this.state.parent ? "block" : "none" }
-        console.log(this.state.kidsArray)
         return (
             <div>
-                <h1>{this.state.name}  Profile {this.props.user}</h1>
+                <h1>{this.state.name}  Profile </h1>
                 <Col className="justify-content-md-center">
                     <Col xs lg="2"> User Name:  {this.state.userName}  </Col>
                     <Col xs lg="2"> Name:  {this.state.name}    </Col>
@@ -79,12 +83,7 @@ class Profile extends Component {
                         <Row>
                             <Col sm={3}>
                                 <Nav variant="pills" className="flex-column">
-                                    {this.state.kidsArray.map(kid => {
-                return   <Nav.Item>
-                    <Nav.Link eventKey={kid._id}>{kid.name}</Nav.Link>
-                </Nav.Item>;
-            })}
-                                    
+                                    {tabs}
                                 </Nav>
                             </Col>
                             <Col sm={9}>
