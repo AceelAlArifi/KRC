@@ -15,9 +15,9 @@ class Book extends Component {
                 <h3>Rate</h3>
                 <h3>Age range</h3>
 
-                <div className="Reviews">
+                {/* <div className="Reviews">
 
-                </div>
+                </div> */}
             </div>
         )
     }

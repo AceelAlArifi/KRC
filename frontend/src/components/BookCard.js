@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 class BookCard extends Component {
 
@@ -9,17 +10,23 @@ class BookCard extends Component {
 
     render() {
         return (
+            // <a href="/Posts" className="roll-button button-slider">Start Discovering!</a>
+            // <div onClick={this.handleClickOpen} className="roll-button button-slider">Add New Book</div>
+
             <div className="card">
+                <Card.Title>{this.props.book.title}</Card.Title>
                 <Card className="card">
-                    <Card.Img className="cardimg" variant="top" src={this.props.book.image} height="30px"width="20px"/>
+                    <Card.Img className="cardimg" variant="top" src={this.props.book.image} height="70%"width="50%"/>
                     <Card.Body className="card">
-                        <Card.Title>{this.props.book.title}</Card.Title>
                         <Card.Text>
-                            By {this.props.book.author}
+                            By: {this.props.book.author}
+                        </Card.Text>
+                        <Card.Text>
+                          Year of publish:{this.props.book.year}
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer className="card">
-                        <small className="text-muted"> {this.props.book.year}</small>
+                        <a href="/Book" className="roll-button button-slider">Discover more!</a>
                     </Card.Footer>
                 </Card>
             </div>

@@ -75,7 +75,7 @@ a:hover, a:focus{
 img {
     vertical-align: middle;
     border-style: none;
-    height: 60px;
+    /* height: 60px; */
 }
 
 
@@ -88,5 +88,6 @@ img {
     font-size: 1.25rem;
     line-height: inherit;
     white-space: nowrap;
+    /* height: 60px; */
 }
 
