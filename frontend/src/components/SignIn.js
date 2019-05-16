@@ -8,10 +8,8 @@ class SignIn extends Component {
         return (
            
             <div>
-                 <div>
-                    <img src="https://i.ibb.co/kKnZLJ2/bookexploreres.png" alt="Logo" />
-                </div>
                 <div>
+                    <img src="https://i.ibb.co/kKnZLJ2/bookexploreres.png" alt="Logo" />
                     <h1 className="welcome">Sign In</h1>
                 </div>
                 <Col sm={3} md={4} className="mx-auto">
@@ -25,7 +23,7 @@ class SignIn extends Component {
                             <Form.Label sm={2}>Password</Form.Label>
                             <Form.Control type="password" name="password" placeholder="Password" onChange={this.props.change} />
                         </Form.Group>
-                        <Button variant="primary" type="submit" color="primary" size="lg" block onClick={this.props.login}  >
+                        <Button variant="light" type="submit" color="primary" size="lg" block onClick={this.props.login}  >
                             Login</Button>
      
                     </Form>

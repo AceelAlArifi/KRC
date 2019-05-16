@@ -157,7 +157,7 @@ class SignUp extends Component {
                             <Form.Label sm={2}>Your Parent Email</Form.Label>
                             <Form.Control type="email" name="parentemail" placeholder="Enter Your Parent Email" onChange={this.change} />
                         </Form.Group>
-                        <Button variant="primary" color="primary" size="lg" block onClick={this.submit}>Sign Up</Button>
+                        <Button variant="light" color="primary" size="lg" block onClick={this.submit}>Sign Up</Button>
                     </Form>
                 </Col>
 
